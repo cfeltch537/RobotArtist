@@ -1,6 +1,6 @@
 function [hCyton] = StartVirtualCyton( connectToHardware , comPortString)
 %STARTVIRTUALCYTON Summary of this function goes here
-%   Start the virtual cytin robot, and connect to the hardcoded com port if
+%   Start the virtual cyton robot, and connect to the hardcoded com port if
 %   input is true.
 
     import Presentation.CytonI.*

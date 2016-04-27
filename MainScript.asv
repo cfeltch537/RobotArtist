@@ -14,7 +14,7 @@ addpath(miniVieDirs)
 global inTestMode;
 
 % Initialize Arduino UNO and Cyton
-uno = []% = arduino
+uno = [] % = arduino
 hCyton = StartVirtualCyton(false,'COM3');
 inTestMode = true;
 
@@ -29,12 +29,10 @@ while true
         draw = isDrawGesturePerformed();
         while(draw)
         MoveToDrawDistance(hCyton, uno)
-        DrawLoop(hCyton, uno)
-        draw = isDrawGesturePerformed();
-        end
+        DrawLoop()
     else
         MoveToDrawDistance(hCyton, uno)
-        DrawLoop(hCyton, uno)
+        DrawLoop()
     end
 end
 
