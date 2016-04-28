@@ -1,7 +1,8 @@
 function J = numericJacobian(q)
    % Kinematics for the Cyton Robot
    % Computed statically from getDHParams
-   d = [37.9300 -4.6200 145.0000 11.0000 175.0000 7.4000 -7.6500 0 0];
+   d = [37.9300 -4.6200 145.0000 11.0000 175.0000 7.4000 -7.6500 0 138];
+   d_old = [37.9300 -4.6200 145.0000 11.0000 175.0000 7.4000 -7.6500 0 0];
    a = [0 0 0 0 0 67.7000 53.1500 8.0000 8.0000];
    % [A] matrices represent the kinematics of each joint
    piOver2 = pi/2;

@@ -10,31 +10,37 @@ close all;
 miniVieDirs = genpath('C:\Users\Cody\Documents\GitHub\MiniVie')
 addpath(miniVieDirs)
 
-%% Start the Virtual Cyton Robot
-global inTestMode;
+global inTestMode SignalSource;
 
-% Initialize Arduino UNO and Cyton
-uno = []% = arduino
+SignalSource = Inputs.MyoUdp.getInstance();
+SignalSource.initialize();
+SignalSource.NumSamples = 100;
+
+%% Start the Virtual Cyton Robot
+
+% Initialize Arduino unoArduinoand Cyton
 hCyton = StartVirtualCyton(false,'COM3');
-inTestMode = true;
+unoArduino  = arduino('COM5', 'uno')
+inTestMode = false;
+
+%% 
 
 % Place in initial search Position, Then move to canvas on button press
 PlaceInInitialPosition(hCyton)
     waitforbuttonpress
-MoveToHoldDistance(hCyton, uno)
+MoveToHoldDistance(hCyton, unoArduino)
     waitforbuttonpress
 
 while true
     if inTestMode == false
         draw = isDrawGesturePerformed();
         while(draw)
-        MoveToDrawDistance(hCyton, uno)
-        DrawLoop(hCyton, uno)
-        draw = isDrawGesturePerformed();
+            MoveToDrawDistance(hCyton, unoArduino)
+            DrawLoop(hCyton)
         end
     else
-        MoveToDrawDistance(hCyton, uno)
-        DrawLoop(hCyton, uno)
+        MoveToDrawDistance(hCyton, unoArduino)
+        DrawLoop(hCyton)
     end
 end
 

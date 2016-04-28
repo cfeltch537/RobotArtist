@@ -15,10 +15,10 @@ function MoveToDrawDistance(hCyton, uno)
     % When not in test mode move foreward until the IR sensor output shows
     % that the canvas is close to you
     else
-        voltage = readVoltage(uno,pin)
-        while voltage > 1.0
+        voltage = uno.readVoltage(0)
+        while voltage > 1.6
             MoveInGlobalX(hCyton, 0.05)
-            voltage = readVoltage(uno,pin)
+            voltage = uno.readVoltage(0)
         end
     end
    
